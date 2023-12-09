@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto-Regular';
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tests{
+    margin-top: 25px;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 10px;
+    border: 2px solid #d9d9d9;
+    padding: 10px;
+}
+
+.test{
+    border: 2px solid #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    min-height: 300px;
+    padding: 10px;
+    margin: auto;
+}
+
+.test-name{
+    font-size: 18px;
+    word-wrap: break-word;
+    width: 90%;
+    text-align: center;
+}
+
+.solve-test{
+    font-size: 20px;
+    color: #00A1D3;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.delete-test{
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    align-items: center;
+}
+
+.create-test{
+    width: 80%;
+    display: flex;
+    margin: 10px;
+}
+
+.create-test-title{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.create-test-button{
+    font-size: 24px;
+    color: #00A1D3;
+    margin-right: auto;
+    text-decoration: none;
+}

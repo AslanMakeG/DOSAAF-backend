@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto-Regular';
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#test{
+    margin-top: 10px;
+    border: 2px solid #d9d9d9;
+    width: 75%;
+}
+
+.test-name{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.test-name-title{
+    font-size: 25px;
+    width: 15%;
+}
+
+#test-name-input{
+    border: solid 2px #d9d9d9;
+    font-size: 20px;
+    padding: 2px;
+    flex: 1;
+}
+
+.test-top-title{
+    font-size: 25px;
+    margin: 10px;
+}
+
+.test-top{
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.text-button{
+    color: #00A1D3;
+    margin: 25px 0 10px 10px;
+    cursor: pointer;
+}
+
+#test-questions{
+    margin: 10px;
+}
+
+#question-type{
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+#question-name{
+    font-size: 16px;
+}
+
+.question-title{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#create-question{
+    font-size: 18px;
+    color: #00A1D3;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.question{
+    border: 2px solid #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.question-top{
+    display: flex;
+    align-items: center;
+}
+
+.question-top-title{
+    font-size: 18px;
+    margin: 10px;
+}
+
+.question-top-input{
+    font-size: 18px;
+    width: 50%;
+    border: 1px solid #d9d9d9;
+    padding: 2px;
+}
+
+.question-body{
+    margin: 10px;
+    padding-left: 10px;
+}
+
+.radio-question-text, .checkbox-question-text{
+    font-size: 16px;
+    border: 1px solid #d9d9d9;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.answer{
+    margin-bottom: 10px;
+}
+
+.text-question-text{
+    font-size: 18px;
+    width: 40%;
+    border: 1px solid #d9d9d9;
+    padding: 5px;
+}
+
+.create-test{
+    display: flex;
+    align-items: center;
+}
+
+.create-test-button{
+    border: 2px solid #d9d9d9;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.create-test-button:hover{
+    background-color: rgb(175, 175, 175);
+}
+
+#create-test-error{
+    color: red;
+}

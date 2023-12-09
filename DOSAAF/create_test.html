@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание теста</title>
+    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/create_test.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+</head>
+<body>
+    <h1>Создание теста</h1>
+    <div id="modal-window">
+        <div class="shadow"></div>
+        <div class="modal">
+            <div class="modal-top">
+                <div class="modal-name">Добавить вопрос</div>
+                <div id="modal-close" onclick="close_modal_window()">✖</div>
+            </div>
+
+            <div class="modal-body">
+                <p class="question-title">Название вопроса</p>
+                <input id="question-name" type="text" name="question-name" placeholder="Введите название вопроса">
+
+                <p class="question-title">Тип вопроса</p>
+                <select id="question-type" name="question-type">
+                    <option value="one">Один выбор</option>
+                    <option value="multiple">Множественный выбор</option>
+                    <option value="text">Текстовый ответ</option>
+                </select>
+
+                <p id="create-question" onclick="create_question()">Создать вопрос</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-name">
+        <p class="test-name-title">Название теста: </p>
+        <input id="test-name-input" type="text">
+    </div>
+
+    <div id="test">
+        <div class="test-top">
+            <p class="test-top-title">Вопросы</p>
+        </div>
+
+        <div id="test-questions">
+        </div>
+
+        <div class="add-question">
+            <p id="add-question-button" class="text-button" onclick="open_modal_window()">Добавить вопрос</p>
+        </div>
+        <div class="create-test">
+            <button class="create-test-button" onclick="create_test()">Создать тест</button>
+            <p id="create-test-error"></p>
+        </div>
+    </div>
+</body>
+<script src="scripts/modal_window.js"></script>
+<script src="scripts/create_test.js"></script>
+</html>
