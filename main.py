@@ -5,9 +5,11 @@ import os
 from datetime import datetime
 from fastapi import FastAPI
 import uvicorn
+from fastapi.encoders import jsonable_encoder
 from starlette import status
-from starlette.responses import Response
-from models import test_models
+from starlette.responses import Response, JSONResponse
+from models import test_models, database_models
+from lib import User
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -84,6 +86,25 @@ async def create_test(test: test_models.UserSolvedTest):
             result += 1
 
     return {"result": result, "question_amount": len(right_questions)}
+
+@app.post('/api/register_user')
+async def register_user(user: database_models.User):
+    response = User.registration(get_id(), user.name, user.surname, user.patronymic, user.email, user.password)
+
+    if response is None:
+        return {'status': 200}
+    else:
+        return {'status': 400, 'error': response}
+
+
+@app.get('/api/auth_user/{email}/{password}')
+async def auth_user(email: str, password: str):
+    success, response = User.auth(email, password)
+
+    if success:
+        return JSONResponse(content=jsonable_encoder({'status': 200, 'user_id': response}))
+    else:
+        return JSONResponse(content=jsonable_encoder({'status': 400, 'error': response}))
 
 if __name__ == '__main__':
     uvicorn.run(app=app)
