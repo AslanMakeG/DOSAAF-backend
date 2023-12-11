@@ -9,7 +9,7 @@ from fastapi.encoders import jsonable_encoder
 from starlette import status
 from starlette.responses import Response, JSONResponse
 from models import test_models, database_models
-from lib import User
+from lib import User, ServiceManager, NewsManager
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -105,6 +105,61 @@ async def auth_user(email: str, password: str):
         return JSONResponse(content=jsonable_encoder({'status': 200, 'user_id': response}))
     else:
         return JSONResponse(content=jsonable_encoder({'status': 400, 'error': response}))
+
+
+@app.get('/api/get_user_info/{id}')
+async def get_user_info(id: str):
+    user_info = User.get_info(id)
+
+    return JSONResponse(content=jsonable_encoder(user_info))
+
+
+@app.get('/api/get_user_type/{id}')
+async def get_user_info(id: str):
+    user_type = User.get_type(id)
+
+    return JSONResponse(content=jsonable_encoder(user_type))
+
+
+@app.post('/api/create_service')
+async def create_service(service: database_models.Service):
+    service_id = ServiceManager.create_service(get_id(), service.name, service.description, int(service.cost))
+
+    return JSONResponse(content=jsonable_encoder({'id': service_id, 'name': service.name,
+                                                  'description': service.description, 'cost': service.cost}))
+
+
+@app.get('/api/delete_service/{id}')
+async def delete_service(id: str):
+    ServiceManager.delete_service(id)
+    return Response(status_code=status.HTTP_200_OK)
+
+
+@app.get('/api/get_services')
+async def get_services():
+    service_list = ServiceManager.get_all()
+    return JSONResponse(content=jsonable_encoder(service_list))
+
+
+@app.post('/api/create_news')
+async def create_news(news: database_models.News):
+    news_id = NewsManager.create_news(get_id(), news.name, news.description)
+
+    return JSONResponse(content=jsonable_encoder({'id': news_id, 'name': news.name,
+                                                  'description': news.description }))
+
+
+@app.get('/api/delete_news/{id}')
+async def delete_news(id: str):
+    NewsManager.delete_news(id)
+    return Response(status_code=status.HTTP_200_OK)
+
+
+@app.get('/api/get_news')
+async def get_news():
+    news_list = NewsManager.get_all()
+    return JSONResponse(content=jsonable_encoder(news_list))
+
 
 if __name__ == '__main__':
     uvicorn.run(app=app)
