@@ -20,3 +20,10 @@ class Service(BaseModel):
 class News(BaseModel):
     name: str
     description: str
+
+
+class Request(BaseModel):
+    id_user: str | None
+    id_service: str
+    user_fullname: str
+    phone_number: str

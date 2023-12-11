@@ -9,7 +9,7 @@ from fastapi.encoders import jsonable_encoder
 from starlette import status
 from starlette.responses import Response, JSONResponse
 from models import test_models, database_models
-from lib import User, ServiceManager, NewsManager
+from lib import User, ServiceManager, NewsManager, RequestManager
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -160,6 +160,12 @@ async def get_news():
     news_list = NewsManager.get_all()
     return JSONResponse(content=jsonable_encoder(news_list))
 
+
+@app.post('/api/create_request')
+async def create_request(request: database_models.Request):
+    RequestManager.create_request(get_id(), request.id_user, request.id_service, request.user_fullname, request.phone_number)
+
+    return Response(status_code=status.HTTP_200_OK)
 
 if __name__ == '__main__':
     uvicorn.run(app=app)
